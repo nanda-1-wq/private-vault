@@ -4,6 +4,10 @@
 
 **Built for the [Colosseum Frontier Hackathon](https://arena.colosseum.org) - Encrypt & Ika track**
 
+[![Live](https://img.shields.io/badge/Live-private--vault--pink.vercel.app-brightgreen)](https://private-vault-pink.vercel.app)
+[![Network](https://img.shields.io/badge/Network-Solana%20Devnet-9945FF)](https://api.devnet.solana.com)
+[![Track](https://img.shields.io/badge/Track-Encrypt%20%2B%20Ika%20%E2%80%94%20Colosseum%20Frontier-orange)](https://arena.colosseum.org)
+
 ---
 
 ## The Problem
@@ -266,7 +270,9 @@ When `NEXT_PUBLIC_DEMO_MODE=true` (the default):
 
 ## Live Demo
 
-[https://private-vault.vercel.app](https://private-vault.vercel.app)
+- **Live:** [https://private-vault-pink.vercel.app](https://private-vault-pink.vercel.app)
+- **GitHub:** [https://github.com/nanda-1-wq/private-vault](https://github.com/nanda-1-wq/private-vault)
+- **Program ID:** [`3YUVeWXTZSNPuLktLZKNRtLCNXpv5JrHj3krhVMMv8iq`](https://explorer.solana.com/address/3YUVeWXTZSNPuLktLZKNRtLCNXpv5JrHj3krhVMMv8iq?cluster=devnet)
 
 ## Demo Video
 
