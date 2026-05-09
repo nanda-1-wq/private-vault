@@ -11,7 +11,7 @@ license = "MIT"
 # Workspace-level dependency versions — programs pin via workspace = true
 # ---------------------------------------------------------------------------
 [workspace.dependencies]
-pinocchio = "0.10"
+pinocchio = { version = "0.10", features = ["cpi"] }
 
 # Ika dWallet Pinocchio SDK (pre-alpha)
 ika-dwallet-pinocchio = { git = "https://github.com/dwallet-labs/ika-pre-alpha", branch = "main" }
@@ -19,7 +19,7 @@ ika-dwallet-pinocchio = { git = "https://github.com/dwallet-labs/ika-pre-alpha",
 # Encrypt Pinocchio SDK + types + DSL (pre-alpha)
 encrypt-pinocchio = { git = "https://github.com/dwallet-labs/encrypt-pre-alpha", branch = "main" }
 encrypt-types     = { git = "https://github.com/dwallet-labs/encrypt-pre-alpha", branch = "main" }
-encrypt-dsl       = { git = "https://github.com/dwallet-labs/encrypt-pre-alpha", branch = "main" }
+encrypt-dsl       = { git = "https://github.com/dwallet-labs/encrypt-pre-alpha", branch = "main", package = "encrypt-solana-dsl" }
 
 # ---------------------------------------------------------------------------
 # Optimised release profile for SBF deployment

@@ -59,7 +59,7 @@ Solution: use **Pinocchio for both** — both SDKs have first-class Pinocchio su
 |---|---|
 | Ika dWallet Program | `87W54kGYFQ1rgWqMeu4XTPHWXWmXSQCcjm8vCTfiq1oY` |
 | Encrypt Program | `4ebfzWdKnrnGseuQpezXdG8yCdHqwQ1SSBHD3bWArND8` |
-| pvault (our program) | `<set after T6 deploy>` |
+| pvault (our program) | `3YUVeWXTZSNPuLktLZKNRtLCNXpv5JrHj3krhVMMv8iq` |
 
 ---
 
@@ -340,10 +340,10 @@ UI always shows DEMO_MODE orange banner. Encrypted fields always show `•••
 
 ## Session Log
 
-- **Session 1**: [ ] T1 scaffold complete
-- **Session 2**: [ ] T2-T4 Rust state + PDA + FHE graphs
-- **Session 3**: [ ] T5 all 8 instructions
-- **Session 4**: [ ] T6 build + deploy
+- **Session 1**: [x] T1 scaffold complete
+- **Session 2**: [x] T2-T4 Rust state + PDA + FHE graphs
+- **Session 3**: [x] T5 all 8 instructions
+- **Session 4**: [x] T6 build + deploy — Program ID: `3YUVeWXTZSNPuLktLZKNRtLCNXpv5JrHj3krhVMMv8iq`
 - **Session 5**: [ ] T7-T8 Next.js + all pages
 - **Session 6**: [ ] T9 wire frontend to program
 - **Session 7**: [ ] T10 keeper + QA + submit

@@ -23,13 +23,12 @@ test-sbf      = []
 [dependencies]
 pinocchio             = { workspace = true }
 pinocchio-system      = "0.5"
+# Unlock find_program_address on host (pinocchio already pulls this in with
+# the "syscalls" feature; adding "curve25519" here makes it available for
+# `cargo check` on non-SBF targets as well).
+solana-address        = { version = "2.0", features = ["syscalls", "curve25519"] }
 ika-dwallet-pinocchio = { workspace = true }
 encrypt-pinocchio     = { workspace = true }
 encrypt-types         = { git = "https://github.com/dwallet-labs/encrypt-pre-alpha", branch = "main" }
 encrypt-dsl           = { workspace = true }
 
-# ---------------------------------------------------------------------------
-# Dev dependencies (unit + integration tests only)
-# ---------------------------------------------------------------------------
-[dev-dependencies]
-pinocchio = { version = "0.10", features = ["test"] }

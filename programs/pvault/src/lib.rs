@@ -8,11 +8,12 @@
 //   4  Repay
 
 use pinocchio::{
-    account_info::AccountInfo,
+    AccountView,
+    Address,
     entrypoint,
-    program_error::ProgramError,
-    pubkey::Pubkey,
+    ProgramResult,
 };
+use pinocchio::error::ProgramError;
 
 pub mod cpi;
 pub mod error;
@@ -28,10 +29,10 @@ pub mod state;
 entrypoint!(process_instruction);
 
 pub fn process_instruction(
-    program_id: &Pubkey,
-    accounts: &[AccountInfo],
+    program_id: &Address,
+    accounts: &[AccountView],
     instruction_data: &[u8],
-) -> Result<(), ProgramError> {
+) -> ProgramResult {
     if instruction_data.is_empty() {
         return Err(ProgramError::InvalidInstructionData);
     }
