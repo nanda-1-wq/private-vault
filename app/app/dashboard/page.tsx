@@ -23,7 +23,13 @@ import { useVaultStore } from '@/store/vault';
 import { fetchPosition, DEMO_POSITION } from '@/lib/pvault';
 import { DEMO_MODE, SATS_PER_BTC, USDC_DECIMALS } from '@/lib/config';
 import { toast } from 'sonner';
-import { ArrowUpRight, Plus, RefreshCw } from 'lucide-react';
+import { ArrowUpRight, Plus, RefreshCw, ExternalLink } from 'lucide-react';
+
+interface StoredTx {
+  hash: string;
+  type: 'deposit' | 'borrow';
+  timestamp: number;
+}
 
 const LTV_HISTORY = [
   { time: '00:00', ltv: 57.2 },
@@ -71,9 +77,14 @@ export default function DashboardPage() {
   const { position, setPosition, btcPriceUsd, setLoading, isLoading } =
     useVaultStore();
   const [mounted, setMounted] = useState(false);
+  const [recentTxs, setRecentTxs] = useState<StoredTx[]>([]);
 
   useEffect(() => {
     setMounted(true);
+    try {
+      const stored = JSON.parse(localStorage.getItem('pvault_txs') ?? '[]') as StoredTx[];
+      setRecentTxs(stored.slice(0, 3));
+    } catch {}
   }, []);
 
   useEffect(() => {
@@ -329,6 +340,45 @@ export default function DashboardPage() {
                 threshold
               </p>
             </div>
+
+            {/* Recent Transactions */}
+            {recentTxs.length > 0 && (
+              <div className="vault-card p-5 space-y-3">
+                <h2 className="text-sm font-semibold">Recent Transactions</h2>
+                <div className="space-y-2">
+                  {recentTxs.map((tx) => (
+                    <div
+                      key={tx.hash}
+                      className="flex items-center gap-3 bg-secondary/30 border border-border/40 rounded-lg px-4 py-3"
+                    >
+                      <div className="flex-1 min-w-0 space-y-0.5">
+                        <p className="text-xs font-semibold text-foreground">
+                          {tx.type === 'deposit' ? 'Deposit Collateral' : 'Borrow USDC'}
+                        </p>
+                        <p className="font-num text-xs text-muted-foreground truncate">
+                          {tx.hash.slice(0, 16)}…{tx.hash.slice(-12)}
+                        </p>
+                        <p className="text-xs text-muted-foreground/50">
+                          {new Date(tx.timestamp).toLocaleString()}
+                        </p>
+                      </div>
+                      <a
+                        href={`https://solscan.io/tx/${tx.hash}?cluster=devnet`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 font-semibold shrink-0 underline underline-offset-2"
+                      >
+                        Solscan
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-muted-foreground/50">
+                  All transactions are real Solana devnet transactions — verifiable on-chain
+                </p>
+              </div>
+            )}
           </>
         )}
       </main>

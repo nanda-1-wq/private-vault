@@ -16,7 +16,16 @@ export function StepWizard({ steps, currentStep }: StepWizardProps) {
         return (
           <div key={i} className="flex items-start flex-1">
             <div className="flex flex-col items-center w-full">
-              <div className="flex items-center w-full">
+              <div className="flex items-center w-full justify-center">
+                {/* Left connector (not on first step) */}
+                {i > 0 && (
+                  <div
+                    className={[
+                      'flex-1 h-px mx-1 transition-colors duration-300',
+                      done || active ? 'bg-cyan-500' : 'bg-border',
+                    ].join(' ')}
+                  />
+                )}
                 {/* Circle */}
                 <div
                   className={[
@@ -30,11 +39,11 @@ export function StepWizard({ steps, currentStep }: StepWizardProps) {
                 >
                   {done ? <Check className="h-3.5 w-3.5" /> : stepNum}
                 </div>
-                {/* Connector line */}
+                {/* Right connector (not on last step) */}
                 {i < steps.length - 1 && (
                   <div
                     className={[
-                      'flex-1 h-px mt-0 mx-1 transition-colors duration-300',
+                      'flex-1 h-px mx-1 transition-colors duration-300',
                       done ? 'bg-cyan-500' : 'bg-border',
                     ].join(' ')}
                   />
@@ -42,7 +51,7 @@ export function StepWizard({ steps, currentStep }: StepWizardProps) {
               </div>
               <span
                 className={[
-                  'text-[11px] mt-1.5 whitespace-nowrap text-left',
+                  'text-[11px] mt-1.5 whitespace-nowrap text-center',
                   active
                     ? 'text-cyan-400 font-medium'
                     : done
