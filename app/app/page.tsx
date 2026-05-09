@@ -18,7 +18,7 @@ const FEATURES = [
   {
     icon: <Zap className="h-5 w-5 text-cyan-400 shrink-0" />,
     title: 'Bridgeless Custody via Ika MPC',
-    desc: 'Deposit BTC from any chain without trusted bridges or wrapped tokens. Your dWallet is jointly controlled by MPC — no single party holds your keys.',
+    desc: 'Deposit BTC from any chain without trusted bridges or wrapped tokens. Your dWallet is jointly controlled by MPC - no single party holds your keys.',
   },
   {
     icon: <Shield className="h-5 w-5 text-cyan-400 shrink-0" />,
@@ -72,7 +72,7 @@ export default function HomePage() {
     window.addEventListener('resize', onResize);
 
     const draw = () => {
-      // Fade trail — matches background #080810
+      // Fade trail - matches background #080810
       ctx.fillStyle = 'rgba(8, 8, 16, 0.055)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -92,7 +92,7 @@ export default function HomePage() {
       }
     };
 
-    // ~18 fps — subtle, not distracting
+    // ~18 fps - subtle, not distracting
     const interval = setInterval(draw, 55);
 
     return () => {
@@ -232,19 +232,19 @@ export default function HomePage() {
           >
             Deposit BTC from any chain. Borrow USDC on Solana.{' '}
             <span style={{ color: 'rgba(209,213,219,0.85)' }}>
-              All position data encrypted by FHE — only the liquidation boolean is ever revealed.
+              All position data encrypted by FHE - only the liquidation boolean is ever revealed.
             </span>
           </p>
 
           {/* CTA row */}
           <div className="flex items-center justify-center gap-4 pt-2 flex-wrap">
-            {/* Primary — conic gradient glow border */}
+            {/* Primary - conic gradient glow border */}
             <GlowButton onClick={() => setVisible(true)}>
               Connect Phantom
               <ArrowRight className="h-4 w-4" />
             </GlowButton>
 
-            {/* Secondary — transparent white border, no glow */}
+            {/* Secondary - transparent white border, no glow */}
             <Link
               href="/dashboard"
               className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold rounded-lg transition-colors duration-200"

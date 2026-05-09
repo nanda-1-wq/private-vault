@@ -1,5 +1,5 @@
 /**
- * pvault program client — PDA derivation + instruction builders.
+ * pvault program client - PDA derivation + instruction builders.
  * All instruction discriminators must match programs/pvault/src/lib.rs.
  */
 import {
@@ -13,7 +13,7 @@ import { PVAULT_PROGRAM_ID, ENCRYPT_PROGRAM_ID, IKA_PROGRAM_ID } from './config'
 const PROGRAM_ID = new PublicKey(PVAULT_PROGRAM_ID);
 
 // Pyth devnet BTC/USD price feed
-// https://pyth.network/developers/price-feed-ids — devnet BTC/USD
+// https://pyth.network/developers/price-feed-ids - devnet BTC/USD
 const PYTH_BTC_USD_DEVNET = new PublicKey(
   process.env.NEXT_PUBLIC_PYTH_BTC_USD_FEED ||
   'HovQMDrbAgAYPCmaTKoHjnxcF3bL71SEqRR3RTT7iqkg'
@@ -129,9 +129,9 @@ export async function fetchPosition(
   return {
     dwalletPda,
     btcAddress: 'unknown', // requires separate Ika lookup
-    collateralSats: 0, // encrypted — cannot read directly
-    debtUsdcE6: 0, // encrypted — cannot read directly
-    ltvBps: 0, // recomputed via FHE — unknown without decryption
+    collateralSats: 0, // encrypted - cannot read directly
+    debtUsdcE6: 0, // encrypted - cannot read directly
+    ltvBps: 0, // recomputed via FHE - unknown without decryption
     healthStatus,
     encCollateralPubkey,
     encDebtPubkey,
@@ -149,13 +149,13 @@ async function hashBtcAddress(btcAddress: string): Promise<Buffer> {
 }
 
 // ------------------------------------------------------------------
-// OpenPosition — discriminator 1
+// OpenPosition - discriminator 1
 //
 // Accounts (0-indexed):
-//   [0] position       — PDA [b"position", owner], writable
-//   [1] owner          — signer, writable (pays rent)
-//   [2] dwallet        — Ika dWallet PDA
-//   [3] market         — Market PDA (readonly)
+//   [0] position       - PDA [b"position", owner], writable
+//   [1] owner          - signer, writable (pays rent)
+//   [2] dwallet        - Ika dWallet PDA
+//   [3] market         - Market PDA (readonly)
 //   [4] system_program
 //
 // Data: [0x01] + [32 bytes: SHA-256(btcAddress)]
@@ -187,15 +187,15 @@ export async function buildOpenPositionInstruction(
 }
 
 // ------------------------------------------------------------------
-// DepositCollateral — discriminator 2
+// DepositCollateral - discriminator 2
 //
 // Accounts (0-indexed):
-//   [0] position          — PDA [b"position", owner], writable
-//   [1] owner             — signer
-//   [2] collateral_ct     — writable 98-byte EUint64 ciphertext (pre-funded by Encrypt)
-//   [3] collateral_usd_ct — writable 98-byte output ciphertext (pre-funded)
-//   [4] market            — Market PDA (readonly)
-//   [5] oracle            — Pyth BTC/USD price feed (readonly)
+//   [0] position          - PDA [b"position", owner], writable
+//   [1] owner             - signer
+//   [2] collateral_ct     - writable 98-byte EUint64 ciphertext (pre-funded by Encrypt)
+//   [3] collateral_usd_ct - writable 98-byte output ciphertext (pre-funded)
+//   [4] market            - Market PDA (readonly)
+//   [5] oracle            - Pyth BTC/USD price feed (readonly)
 //   [6] encrypt_program
 //
 // Data: [0x02] + [8 bytes: collateral_sats as u64 LE]
@@ -229,25 +229,25 @@ export function buildDepositInstruction(
 }
 
 // ------------------------------------------------------------------
-// Borrow — discriminator 3
+// Borrow - discriminator 3
 //
 // Accounts (0-indexed):
-//   [0]  position        — PDA [b"position", owner], writable
-//   [1]  owner           — signer
-//   [2]  market          — Market PDA (readonly)
-//   [3]  user_usdc_ata   — user's USDC ATA, writable
-//   [4]  usdc_vault      — program USDC vault, writable
-//   [5]  oracle          — Pyth BTC/USD price feed (readonly)
-//   [6]  collateral_ct   — encrypted_collateral_sats ciphertext
-//   [7]  col_usd_ct_out  — writable 98-byte output: calc_collateral_usd result
-//   [8]  health_ltv_ct   — writable 98-byte output: calc_health ltv_bps
-//   [9]  unhealthy_ct    — writable 98-byte output: calc_health is_unhealthy
-//   [10] debt_ct         — encrypted_debt_usdc_e6 ciphertext
-//   [11] new_debt_ct     — writable 98-byte output: apply_borrow result
-//   [12] decrypt_result  — writable 16-byte account for decryption result
+//   [0]  position        - PDA [b"position", owner], writable
+//   [1]  owner           - signer
+//   [2]  market          - Market PDA (readonly)
+//   [3]  user_usdc_ata   - user's USDC ATA, writable
+//   [4]  usdc_vault      - program USDC vault, writable
+//   [5]  oracle          - Pyth BTC/USD price feed (readonly)
+//   [6]  collateral_ct   - encrypted_collateral_sats ciphertext
+//   [7]  col_usd_ct_out  - writable 98-byte output: calc_collateral_usd result
+//   [8]  health_ltv_ct   - writable 98-byte output: calc_health ltv_bps
+//   [9]  unhealthy_ct    - writable 98-byte output: calc_health is_unhealthy
+//   [10] debt_ct         - encrypted_debt_usdc_e6 ciphertext
+//   [11] new_debt_ct     - writable 98-byte output: apply_borrow result
+//   [12] decrypt_result  - writable 16-byte account for decryption result
 //   [13] encrypt_program
-//   [14] token_program   — SPL Token
-//   [15] vault_authority — CPI authority PDA
+//   [14] token_program   - SPL Token
+//   [15] vault_authority - CPI authority PDA
 //
 // Data: [0x03] + [8 bytes: borrow_amount_usdc_e6 as u64 LE]
 // ------------------------------------------------------------------

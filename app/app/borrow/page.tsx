@@ -104,7 +104,7 @@ export default function BorrowPage() {
               afterLtvPct < 70 ? 'healthy' : afterLtvPct < 80 ? 'at_risk' : 'liquidating',
           });
         }
-        toast.success(`Borrowed $${amount.toLocaleString()} USDC — encrypted in FHE`);
+        toast.success(`Borrowed $${amount.toLocaleString()} USDC - encrypted in FHE`);
       } else {
         // Live path: Borrow ix requires pre-allocated ciphertext accounts from keeper
         // For now, raise a clear error pointing to the keeper script
@@ -254,7 +254,7 @@ export default function BorrowPage() {
                 <Lock className="h-3.5 w-3.5 text-cyan-500 mt-0.5 shrink-0" />
                 <span>
                   LTV verification runs via <strong>FHE graph</strong> on
-                  encrypted data. Debt amount is never revealed — only the
+                  encrypted data. Debt amount is never revealed - only the
                   health boolean is decrypted if liquidation is triggered.
                 </span>
               </div>
@@ -294,7 +294,7 @@ export default function BorrowPage() {
                     View on Solscan (Devnet) →
                   </a>
                   <p className="text-xs text-muted-foreground/70">
-                    Real devnet transaction — collateral and debt stored as encrypted EUint64 ciphertexts on-chain
+                    Real devnet transaction - collateral and debt stored as encrypted EUint64 ciphertexts on-chain
                   </p>
                   <Button
                     size="sm"

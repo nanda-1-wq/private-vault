@@ -1,8 +1,8 @@
 # PrivateVault
 
-> Encrypted multi-chain collateral lending on Solana — deposit BTC from any chain, borrow USDC, with all position data protected by Fully Homomorphic Encryption.
+> Encrypted multi-chain collateral lending on Solana - deposit BTC from any chain, borrow USDC, with all position data protected by Fully Homomorphic Encryption.
 
-**Built for the [Colosseum Frontier Hackathon](https://arena.colosseum.org) — Encrypt & Ika track**
+**Built for the [Colosseum Frontier Hackathon](https://arena.colosseum.org) - Encrypt & Ika track**
 
 ---
 
@@ -12,7 +12,7 @@ DeFi lending is transparent by default:
 
 - Anyone can see which positions are approaching the liquidation threshold and front-run liquidators
 - Institutional participants cannot use on-chain lending because their position sizes, entry prices, and risk exposure are fully public
-- Cross-chain BTC collateral requires trusted bridges or wrapped tokens — centralised chokepoints that introduce custodial risk
+- Cross-chain BTC collateral requires trusted bridges or wrapped tokens - centralised chokepoints that introduce custodial risk
 
 ## The Solution
 
@@ -20,11 +20,11 @@ PrivateVault combines two pre-alpha Solana primitives to solve all three problem
 
 | Problem | Solution |
 |---|---|
-| Public position sizes | Encrypt REFHE — collateral & debt stored as EUint64 ciphertexts |
+| Public position sizes | Encrypt REFHE - collateral & debt stored as EUint64 ciphertexts |
 | Front-runnable liquidations | Only the `is_unhealthy` boolean is ever decrypted |
-| Trusted BTC bridge | Ika dWallet MPC — bridgeless BTC custody, no wrapped tokens |
+| Trusted BTC bridge | Ika dWallet MPC - bridgeless BTC custody, no wrapped tokens |
 
-**Core innovation:** FHE graphs compute LTV and health checks entirely on encrypted data. Liquidators trigger `try_liquidate` — which decrypts *only the boolean* — without ever learning position sizes. Front-running is structurally impossible.
+**Core innovation:** FHE graphs compute LTV and health checks entirely on encrypted data. Liquidators trigger `try_liquidate` - which decrypts *only the boolean* - without ever learning position sizes. Front-running is structurally impossible.
 
 ---
 
@@ -64,7 +64,7 @@ Front-runners see only ciphertexts. They cannot determine which positions are ne
 - Creates a Secp256k1 dWallet for each user via gRPC DKG request
 - Transfers dWallet authority to the pvault CPI authority PDA `[b"__ika_cpi_authority"]`
 - On liquidation: calls `ika.approve_message` with TaprootSha256 signing scheme to authorise the BTC transaction
-- BTC transaction is signed by Ika NOA (Network of Authority) — no trusted bridge or custodian
+- BTC transaction is signed by Ika NOA (Network of Authority) - no trusted bridge or custodian
 
 **Ika dWallet Program ID:** `87W54kGYFQ1rgWqMeu4XTPHWXWmXSQCcjm8vCTfiq1oY`
 
@@ -77,7 +77,7 @@ Front-runners see only ciphertexts. They cannot determine which positions are ne
 - All monetary amounts (collateral sats, USDC debt) stored as `EUint64` ciphertexts via `create_input_ciphertext` CPI
 - LTV and health computations are `#[encrypt_fn]` graphs compiled to DAGs and executed by the Encrypt program
 - `encrypted_is_unhealthy` is the *only* ciphertext ever passed to `request_decryption`
-- Collateral amounts and debt positions are never decrypted — not by the keeper, not by liquidators, not by anyone
+- Collateral amounts and debt positions are never decrypted - not by the keeper, not by liquidators, not by anyone
 
 **Encrypt Program ID:** `4ebfzWdKnrnGseuQpezXdG8yCdHqwQ1SSBHD3bWArND8`
 
@@ -102,7 +102,7 @@ FHE rule: every `if` has an `else`. Both branches always evaluated (compiled to 
 
 ## Why Pinocchio (Not Anchor)
 
-Ika requires **Anchor v1** + solana-program 2.2. Encrypt requires **Anchor v0.32** + solana-program 4. These are incompatible in a single Anchor crate. Both SDKs have first-class Pinocchio 0.10 support — so Pinocchio is the solution, not a workaround.
+Ika requires **Anchor v1** + solana-program 2.2. Encrypt requires **Anchor v0.32** + solana-program 4. These are incompatible in a single Anchor crate. Both SDKs have first-class Pinocchio 0.10 support - so Pinocchio is the solution, not a workaround.
 
 ---
 
@@ -154,7 +154,7 @@ Both limitations are disclosed per the hackathon expectations. The on-chain prog
 | 3 | `borrow` | Run FHE health check, transfer USDC |
 | 4 | `repay` | Reduce encrypted debt ciphertext |
 | 5 | `refresh_health` | Rerun `calc_health` graph, update `enc_is_unhealthy` |
-| 6 | `try_liquidate` | Decrypt health boolean ONLY — initiate BTC liquidation if == 1 |
+| 6 | `try_liquidate` | Decrypt health boolean ONLY - initiate BTC liquidation if == 1 |
 | 7 | `commit_liquidation` | Finalise position after BTC confirmation |
 
 ---
@@ -270,15 +270,15 @@ When `NEXT_PUBLIC_DEMO_MODE=true` (the default):
 
 ## Demo Video
 
-_Recording the walkthrough — link will be added before submission._
+_Recording the walkthrough - link will be added before submission._
 
 ---
 
 ## Judging Notes
 
-This project integrates **both** required primitives as load-bearing parts of the core protocol — not bolt-ons:
+This project integrates **both** required primitives as load-bearing parts of the core protocol - not bolt-ons:
 
 - **Ika** is the *only* way BTC moves. No bridge. No wrapped token. dWallet MPC is the custody layer.
 - **Encrypt** is the *only* way position data is stored. All monetary values are ciphertexts from the moment they enter the system.
 
-The key innovation — decrypting only the liquidation boolean — is not a UX choice. It is the structural mechanism that prevents front-running and enables institutional-grade privacy for on-chain lending.
+The key innovation - decrypting only the liquidation boolean - is not a UX choice. It is the structural mechanism that prevents front-running and enables institutional-grade privacy for on-chain lending.

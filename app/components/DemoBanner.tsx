@@ -7,7 +7,7 @@ export function DemoBanner() {
       <span className="font-semibold text-orange-400">PRE-ALPHA DEMO</span>
       <span className="text-orange-300/70">
         Using Ika mock signer + Encrypt pre-alpha (no real encryption yet).
-        Architecture is production-ready — privacy guarantee is mocked per
+        Architecture is production-ready - privacy guarantee is mocked per
         sponsor expectations.
       </span>
     </div>

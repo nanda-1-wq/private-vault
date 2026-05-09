@@ -9,7 +9,7 @@ export interface DKGResult {
 
 export async function createDWallet(userPublicKey: string): Promise<DKGResult> {
   if (DEMO_MODE) {
-    // Deterministic mock — 2s simulated DKG latency
+    // Deterministic mock - 2s simulated DKG latency
     await new Promise<void>((r) => setTimeout(r, 2000));
     return {
       dwalletPublicKey:

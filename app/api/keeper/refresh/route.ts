@@ -1,7 +1,7 @@
 /**
  * GET /api/keeper/refresh
  *
- * Cron health-refresh endpoint — called by Vercel cron or an off-chain keeper.
+ * Cron health-refresh endpoint - called by Vercel cron or an off-chain keeper.
  * Iterates open positions and CPI-calls refresh_health on any that need updating.
  */
 import { NextRequest, NextResponse } from 'next/server';
@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
   //       build refresh_health instructions, send in batches.
   return NextResponse.json({
     ok: true,
-    message: 'Keeper refresh stub — positions not yet scanned',
+    message: 'Keeper refresh stub - positions not yet scanned',
     timestamp: new Date().toISOString(),
   });
 }

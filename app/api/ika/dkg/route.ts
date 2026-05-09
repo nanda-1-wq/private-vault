@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  // Live mode — requires IKA_GRPC_URL + ika.proto from dwallet-labs/ika-pre-alpha
+  // Live mode - requires IKA_GRPC_URL + ika.proto from dwallet-labs/ika-pre-alpha
   // const grpc = await import('@grpc/grpc-js');
   // const protoLoader = await import('@grpc/proto-loader');
   // const packageDef = protoLoader.loadSync('./proto/ika.proto', { ...options });

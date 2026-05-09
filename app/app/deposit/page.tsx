@@ -75,7 +75,7 @@ export default function DepositPage() {
       toast.success('dWallet created via Ika MPC');
       setStep(2);
     } catch (e) {
-      toast.error('DKG failed — check console');
+      toast.error('DKG failed - check console');
       console.error(e);
     } finally {
       setDkgLoading(false);
@@ -178,7 +178,7 @@ export default function DepositPage() {
       }
     } catch (e) {
       console.error(e);
-      toast.error('Deposit failed — check console');
+      toast.error('Deposit failed - check console');
     } finally {
       setConfirming(false);
       setConfirmStep('');
@@ -209,12 +209,12 @@ export default function DepositPage() {
           <div className="vault-card-glow p-10 space-y-5">
             <div className="space-y-1">
               <h2 className="text-2xl font-semibold">
-                Step 1 — Create Custody Wallet
+                Step 1 - Create Custody Wallet
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">
                 This runs DKG (Distributed Key Generation) via the Ika Network
                 to create a Secp256k1 dWallet. The resulting BTC address is
-                controlled by a joint key — only your pvault program can
+                controlled by a joint key - only your pvault program can
                 authorize transactions.
               </p>
             </div>
@@ -223,7 +223,7 @@ export default function DepositPage() {
               <div className="flex items-start gap-2">
                 <Info className="h-3.5 w-3.5 text-cyan-500 mt-0.5 shrink-0" />
                 <span>
-                  No bridge, no wrapped tokens. Your BTC stays on Bitcoin — the
+                  No bridge, no wrapped tokens. Your BTC stays on Bitcoin - the
                   dWallet holds the signing key.
                 </span>
               </div>
@@ -272,7 +272,7 @@ export default function DepositPage() {
           <div className="vault-card-glow p-10 space-y-5">
             <div className="space-y-1">
               <h2 className="text-2xl font-semibold">
-                Step 2 — Send BTC to Deposit Address
+                Step 2 - Send BTC to Deposit Address
               </h2>
               <p className="text-base text-muted-foreground">
                 Send Bitcoin (signet) to this address. We&apos;re waiting for 1
@@ -353,7 +353,7 @@ export default function DepositPage() {
           <div className="vault-card-glow p-10 space-y-5">
             <div className="space-y-1">
               <h2 className="text-2xl font-semibold">
-                Step 3 — Confirm Deposit
+                Step 3 - Confirm Deposit
               </h2>
               <p className="text-base text-muted-foreground">
                 Submit the deposit instruction to pvault. This stores your
@@ -442,7 +442,7 @@ export default function DepositPage() {
                   View on Solscan (Devnet) →
                 </a>
                 <p className="text-xs text-muted-foreground/70">
-                  This is a real Solana devnet transaction — verifiable on-chain
+                  This is a real Solana devnet transaction - verifiable on-chain
                 </p>
                 <Button
                   size="sm"

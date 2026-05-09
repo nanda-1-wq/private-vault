@@ -20,7 +20,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: 'PrivateVault — Private BTC Lending on Solana',
+  title: 'PrivateVault - Private BTC Lending on Solana',
   description:
     'Bridgeless BTC collateral lending with FHE-encrypted position data. Built on Ika dWallet MPC + Encrypt REFHE.',
   icons: {

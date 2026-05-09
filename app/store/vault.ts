@@ -5,9 +5,9 @@ export type HealthStatus = 'healthy' | 'at_risk' | 'liquidating' | 'unknown';
 export interface Position {
   dwalletPda: string;
   btcAddress: string;
-  /** plaintext only in demo mode — always 0 in live mode (encrypted) */
+  /** plaintext only in demo mode - always 0 in live mode (encrypted) */
   collateralSats: number;
-  /** plaintext only in demo mode — always 0 in live mode (encrypted) */
+  /** plaintext only in demo mode - always 0 in live mode (encrypted) */
   debtUsdcE6: number;
   healthStatus: HealthStatus;
   ltvBps: number;

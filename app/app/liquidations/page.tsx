@@ -85,7 +85,7 @@ function PositionRow({ pos }: { pos: MockPosition }) {
     setLiquidating(true);
     await new Promise((r) => setTimeout(r, 2500));
     toast.success(
-      `try_liquidate sent — decrypting health boolean only (position data stays encrypted)`,
+      `try_liquidate sent - decrypting health boolean only (position data stays encrypted)`,
       { duration: 5000 }
     );
     setLiquidating(false);
@@ -226,7 +226,7 @@ export default function LiquidationsPage() {
               Liquidation Monitor
             </h1>
             <p className="text-sm text-muted-foreground">
-              Keeper view — monitor all open positions and trigger liquidations.
+              Keeper view - monitor all open positions and trigger liquidations.
             </p>
           </div>
           <Button
@@ -253,7 +253,7 @@ export default function LiquidationsPage() {
               All liquidation checks happen on encrypted data.
             </p>
             <p className="text-xs text-muted-foreground">
-              Collateral amounts and debt are stored as FHE ciphertexts —
+              Collateral amounts and debt are stored as FHE ciphertexts -
               only the{' '}
               <span className="font-mono text-cyan-400">is_unhealthy</span>{' '}
               boolean is ever decrypted. Position sizes are never revealed,
@@ -343,7 +343,7 @@ export default function LiquidationsPage() {
               BTC transaction → liquidation executes on Bitcoin.
             </li>
             <li>
-              Front-runners cannot identify which positions are near threshold —
+              Front-runners cannot identify which positions are near threshold -
               they see only ciphertexts.
             </li>
           </ol>

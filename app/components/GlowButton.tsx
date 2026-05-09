@@ -26,7 +26,7 @@ export function GlowButton({ onClick, children, className }: GlowButtonProps) {
           zIndex: -1,
         }}
       />
-      {/* Gradient border wrapper — hue-rotate animation via .glow-btn-ring */}
+      {/* Gradient border wrapper - hue-rotate animation via .glow-btn-ring */}
       <div
         className="glow-btn-ring"
         style={{

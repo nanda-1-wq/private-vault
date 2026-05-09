@@ -375,7 +375,7 @@ export default function DashboardPage() {
                   ))}
                 </div>
                 <p className="text-xs text-muted-foreground/50">
-                  All transactions are real Solana devnet transactions — verifiable on-chain
+                  All transactions are real Solana devnet transactions - verifiable on-chain
                 </p>
               </div>
             )}

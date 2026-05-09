@@ -1,5 +1,5 @@
 /**
- * Encrypt client — thin wrapper over @encrypt.xyz/pre-alpha-solana-client.
+ * Encrypt client - thin wrapper over @encrypt.xyz/pre-alpha-solana-client.
  *
  * In DEMO_MODE all calls return fake ciphertext pubkeys after a short delay.
  * The architecture is real; the privacy guarantee is mocked (pre-alpha).
@@ -28,7 +28,7 @@ export async function createInputCiphertext(
     };
   }
 
-  // TODO: Live path — use @encrypt.xyz/pre-alpha-solana-client
+  // TODO: Live path - use @encrypt.xyz/pre-alpha-solana-client
   // import { EncryptClient } from '@encrypt.xyz/pre-alpha-solana-client';
   // const client = new EncryptClient({ endpoint: process.env.ENCRYPT_GRPC_URL });
   // const pubkey = await client.createInputCiphertext(value);

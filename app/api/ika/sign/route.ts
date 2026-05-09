@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  // TODO: Live gRPC — call Ika approve_message / sign endpoint
+  // TODO: Live gRPC - call Ika approve_message / sign endpoint
   return NextResponse.json(
     { error: 'Live Ika sign mode not yet configured' },
     { status: 501 }
