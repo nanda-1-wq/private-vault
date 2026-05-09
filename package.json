@@ -9,6 +9,9 @@
     "check":   "cd programs/pvault && cargo check",
     "build-sbf": "cd programs/pvault && cargo build-sbf"
   },
+  "dependencies": {
+    "@solana/web3.js": "1.95"
+  },
   "devDependencies": {
     "typescript": "^5.4.5"
   },

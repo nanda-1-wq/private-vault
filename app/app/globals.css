@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Deep navy-black institutional dark theme */
+    --background: 220 40% 3.5%;
+    --foreground: 210 40% 94%;
+    --card: 220 38% 6%;
+    --card-foreground: 210 40% 94%;
+    --popover: 220 38% 6%;
+    --popover-foreground: 210 40% 94%;
+    --primary: 193 90% 44%;
+    --primary-foreground: 220 40% 4%;
+    --secondary: 218 32% 13%;
+    --secondary-foreground: 210 40% 94%;
+    --muted: 218 32% 13%;
+    --muted-foreground: 215 22% 52%;
+    --accent: 218 32% 13%;
+    --accent-foreground: 210 40% 94%;
+    --destructive: 0 55% 34%;
+    --destructive-foreground: 210 40% 94%;
+    --border: 218 30% 16%;
+    --input: 218 32% 13%;
+    --ring: 193 90% 44%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(6, 182, 212, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(6, 182, 212, 0.75), 0 0 64px rgba(6, 182, 212, 0.38),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+}
+
+@keyframes matrix-flicker {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.45; }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Subtle cyan glow for vault cards (used across app) */
+  .vault-card {
+    @apply rounded-lg border border-cyan-500/20 bg-card;
+    box-shadow: 0 0 0 1px rgba(6, 182, 212, 0.06), inset 0 1px 0 rgba(6, 182, 212, 0.06);
+  }
+
+  .vault-card-glow {
+    @apply vault-card;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.08), 0 0 0 1px rgba(6, 182, 212, 0.12);
+  }
+
+  /* Landing page feature cards — dark bg, thick left cyan accent border */
+  .feature-card-accent {
+    background: #0a0f1e;
+    border-top: 1px solid rgba(6, 182, 212, 0.12);
+    border-right: 1px solid rgba(6, 182, 212, 0.12);
+    border-bottom: 1px solid rgba(6, 182, 212, 0.12);
+    border-left: 3px solid rgba(6, 182, 212, 0.55);
+    border-radius: 0.5rem;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .feature-card-accent:hover {
+    box-shadow: 0 0 24px rgba(6, 182, 212, 0.1), inset 0 1px 0 rgba(6, 182, 212, 0.05);
+    border-top-color: rgba(6, 182, 212, 0.22);
+    border-right-color: rgba(6, 182, 212, 0.22);
+    border-bottom-color: rgba(6, 182, 212, 0.22);
+    border-left-color: rgba(6, 182, 212, 0.9);
+  }
+
+  /* Landing page pulsing primary CTA */
+  .cta-primary {
+    background: linear-gradient(135deg, #0891b2, #0e7490);
+    animation: glow-pulse 2.8s ease-in-out infinite;
+    border-radius: 0.5rem;
+    transition: filter 0.2s ease;
+  }
+  .cta-primary:hover {
+    filter: brightness(1.12);
+  }
+
+  /* Monospace class for numbers and addresses */
+  .font-num {
+    @apply font-mono tabular-nums;
+  }
+
+  /* Range input accent */
+  input[type="range"] {
+    accent-color: #06b6d4;
+  }
+}

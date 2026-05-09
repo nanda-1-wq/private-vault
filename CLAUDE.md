@@ -344,6 +344,6 @@ UI always shows DEMO_MODE orange banner. Encrypted fields always show `•••
 - **Session 2**: [x] T2-T4 Rust state + PDA + FHE graphs
 - **Session 3**: [x] T5 all 8 instructions
 - **Session 4**: [x] T6 build + deploy — Program ID: `3YUVeWXTZSNPuLktLZKNRtLCNXpv5JrHj3krhVMMv8iq`
-- **Session 5**: [ ] T7-T8 Next.js + all pages
+- **Session 5**: [x] T7-T8 Next.js + all pages — Landing, Dashboard, Deposit (3-step), Borrow, Liquidations + 6 shared components
 - **Session 6**: [ ] T9 wire frontend to program
 - **Session 7**: [ ] T10 keeper + QA + submit
