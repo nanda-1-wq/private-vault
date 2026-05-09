@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 import { BtcPrice } from './BtcPrice';
@@ -20,6 +21,7 @@ const NAV_LINKS = [
 export function NavBar() {
   const { publicKey, disconnect, connected } = useWallet();
   const { setVisible } = useWalletModal();
+  const pathname = usePathname();
 
   return (
     <nav
@@ -34,30 +36,44 @@ export function NavBar() {
         <Image
           src="/encrypt_logo.svg"
           alt="PrivateVault"
-          width={24}
-          height={24}
-          style={{
-            filter:
-              'brightness(0) saturate(100%) invert(67%) sepia(98%) saturate(400%) hue-rotate(150deg) brightness(100%)',
-          }}
+          width={28}
+          height={28}
+          style={{ filter: 'brightness(0) invert(1)' }}
           className="opacity-90 group-hover:opacity-100 transition-opacity"
         />
-        <span className="font-bold text-sm tracking-tight text-cyan-400 group-hover:text-cyan-300 transition-colors">
+        <span
+          style={{
+            fontWeight: 700,
+            fontSize: '18px',
+            background: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
+        >
           PrivateVault
         </span>
       </Link>
 
       {/* Center: nav links */}
       <div className="hidden md:flex items-center justify-center gap-7">
-        {NAV_LINKS.map(({ href, label }) => (
-          <Link
-            key={href}
-            href={href}
-            className="text-sm text-gray-500 hover:text-gray-200 transition-colors duration-150 tracking-wide"
-          >
-            {label}
-          </Link>
-        ))}
+        {NAV_LINKS.map(({ href, label }) => {
+          const active = pathname === href;
+          return (
+            <Link
+              key={href}
+              href={href}
+              className="text-sm transition-colors duration-150 tracking-wide"
+              style={
+                active
+                  ? { color: '#06b6d4', borderBottom: '2px solid #06b6d4', paddingBottom: '2px' }
+                  : { color: 'rgb(107 114 128)' }
+              }
+            >
+              {label}
+            </Link>
+          );
+        })}
       </div>
 
       {/* Right: BTC price + wallet */}

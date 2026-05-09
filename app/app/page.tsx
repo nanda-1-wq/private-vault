@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from '@solana/wallet-adapter-react-ui';
 import { DemoBanner } from '@/components/DemoBanner';
+import { GlowButton } from '@/components/GlowButton';
 import { Shield, Zap, EyeOff, ArrowRight } from 'lucide-react';
 
 // Katakana + crypto symbols for matrix rain
@@ -71,8 +72,8 @@ export default function HomePage() {
     window.addEventListener('resize', onResize);
 
     const draw = () => {
-      // Fade trail — matches background #05080f
-      ctx.fillStyle = 'rgba(5, 8, 15, 0.055)';
+      // Fade trail — matches background #080810
+      ctx.fillStyle = 'rgba(8, 8, 16, 0.055)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.font = `${fontSize}px monospace`;
@@ -103,7 +104,7 @@ export default function HomePage() {
   return (
     <div
       className="relative flex flex-col min-h-screen overflow-hidden"
-      style={{ background: '#05080f' }}
+      style={{ background: '#080810' }}
     >
       {/* Matrix rain */}
       <canvas
@@ -142,14 +143,20 @@ export default function HomePage() {
           <Image
             src="/encrypt_logo.svg"
             alt="PrivateVault"
-            width={26}
-            height={26}
-            style={{
-              filter:
-                'brightness(0) saturate(100%) invert(67%) sepia(98%) saturate(400%) hue-rotate(150deg) brightness(100%)',
-            }}
+            width={28}
+            height={28}
+            style={{ filter: 'brightness(0) invert(1)', width: '28px', height: '28px' }}
           />
-          <span className="font-bold text-base tracking-tight text-cyan-400">
+          <span
+            style={{
+              fontWeight: 700,
+              fontSize: '18px',
+              background: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
             PrivateVault
           </span>
         </div>
@@ -231,14 +238,11 @@ export default function HomePage() {
 
           {/* CTA row */}
           <div className="flex items-center justify-center gap-4 pt-2 flex-wrap">
-            {/* Primary — pulsing cyan glow */}
-            <button
-              onClick={() => setVisible(true)}
-              className="cta-primary inline-flex items-center gap-2.5 px-8 py-3.5 text-sm font-bold text-white"
-            >
+            {/* Primary — conic gradient glow border */}
+            <GlowButton onClick={() => setVisible(true)}>
               Connect Phantom
               <ArrowRight className="h-4 w-4" />
-            </button>
+            </GlowButton>
 
             {/* Secondary — transparent white border, no glow */}
             <Link
