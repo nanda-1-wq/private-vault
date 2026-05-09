@@ -1,0 +1,36 @@
+[workspace]
+members  = ["programs/pvault"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+
+# ---------------------------------------------------------------------------
+# Workspace-level dependency versions — programs pin via workspace = true
+# ---------------------------------------------------------------------------
+[workspace.dependencies]
+pinocchio = "0.10"
+
+# Ika dWallet Pinocchio SDK (pre-alpha)
+ika-dwallet-pinocchio = { git = "https://github.com/dwallet-labs/ika-pre-alpha", branch = "main" }
+
+# Encrypt Pinocchio SDK + types + DSL (pre-alpha)
+encrypt-pinocchio = { git = "https://github.com/dwallet-labs/encrypt-pre-alpha", branch = "main" }
+encrypt-types     = { git = "https://github.com/dwallet-labs/encrypt-pre-alpha", branch = "main" }
+encrypt-dsl       = { git = "https://github.com/dwallet-labs/encrypt-pre-alpha", branch = "main" }
+
+# ---------------------------------------------------------------------------
+# Optimised release profile for SBF deployment
+# ---------------------------------------------------------------------------
+[profile.release]
+opt-level        = "z"   # minimise binary size
+overflow-checks  = true
+lto              = "fat"
+codegen-units    = 1
+panic            = "abort"
+
+[profile.release.build-override]
+opt-level     = 3
+codegen-units = 1

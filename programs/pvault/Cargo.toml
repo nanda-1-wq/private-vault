@@ -1,0 +1,35 @@
+[package]
+name    = "pvault"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+# SBF target requires cdylib; lib exposes types for integration tests.
+[lib]
+name        = "pvault"
+crate-type  = ["cdylib", "lib"]
+
+# ---------------------------------------------------------------------------
+# Features
+# ---------------------------------------------------------------------------
+[features]
+default       = []
+no-entrypoint = []   # disable entrypoint! when linking into test harness
+test-sbf      = []
+
+# ---------------------------------------------------------------------------
+# Runtime dependencies
+# ---------------------------------------------------------------------------
+[dependencies]
+pinocchio             = { workspace = true }
+pinocchio-system      = "0.5"
+ika-dwallet-pinocchio = { workspace = true }
+encrypt-pinocchio     = { workspace = true }
+encrypt-types         = { git = "https://github.com/dwallet-labs/encrypt-pre-alpha", branch = "main" }
+encrypt-dsl           = { workspace = true }
+
+# ---------------------------------------------------------------------------
+# Dev dependencies (unit + integration tests only)
+# ---------------------------------------------------------------------------
+[dev-dependencies]
+pinocchio = { version = "0.10", features = ["test"] }

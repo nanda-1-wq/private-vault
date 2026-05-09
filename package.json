@@ -1,0 +1,18 @@
+{
+  "name": "private-vault",
+  "private": true,
+  "workspaces": ["app"],
+  "scripts": {
+    "dev":     "bun run --cwd app dev",
+    "build":   "bun run --cwd app build",
+    "keeper":  "bun run scripts/keeper.ts",
+    "check":   "cd programs/pvault && cargo check",
+    "build-sbf": "cd programs/pvault && cargo build-sbf"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "bun": ">=1.1.0"
+  }
+}
