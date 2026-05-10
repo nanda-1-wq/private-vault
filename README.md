@@ -7,6 +7,7 @@
 [![Live](https://img.shields.io/badge/Live-private--vault--pink.vercel.app-brightgreen)](https://private-vault-pink.vercel.app)
 [![Network](https://img.shields.io/badge/Network-Solana%20Devnet-9945FF)](https://api.devnet.solana.com)
 [![Track](https://img.shields.io/badge/Track-Encrypt%20%2B%20Ika%20%E2%80%94%20Colosseum%20Frontier-orange)](https://arena.colosseum.org)
+[![Demo Video](https://img.shields.io/badge/Demo-YouTube-red)](https://youtu.be/DiLLgpdsVjs)
 
 ---
 
@@ -276,7 +277,7 @@ When `NEXT_PUBLIC_DEMO_MODE=true` (the default):
 
 ## Demo Video
 
-_Recording the walkthrough - link will be added before submission._
+[https://youtu.be/DiLLgpdsVjs](https://youtu.be/DiLLgpdsVjs)
 
 ---
 
