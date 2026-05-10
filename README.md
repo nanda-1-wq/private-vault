@@ -274,6 +274,7 @@ When `NEXT_PUBLIC_DEMO_MODE=true` (the default):
 - **Live:** [https://private-vault-pink.vercel.app](https://private-vault-pink.vercel.app)
 - **GitHub:** [https://github.com/nanda-1-wq/private-vault](https://github.com/nanda-1-wq/private-vault)
 - **Program ID:** [`3YUVeWXTZSNPuLktLZKNRtLCNXpv5JrHj3krhVMMv8iq`](https://explorer.solana.com/address/3YUVeWXTZSNPuLktLZKNRtLCNXpv5JrHj3krhVMMv8iq?cluster=devnet)
+- **Presentation:** [https://gamma.app/docs/PrivateVault-vzh228qqcw1utuv](https://gamma.app/docs/PrivateVault-vzh228qqcw1utuv)
 
 ## Demo Video
 
